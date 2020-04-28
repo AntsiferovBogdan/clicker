@@ -40,19 +40,20 @@ def up_all(url):
     driver.quit()  # закрываем браузер
 
 
-while True:
-    now = datetime.datetime.now()  # на сервере должен стоять часовой пояс МСК
-    if now.minute == 0:
-        if now.hour == 9 or now.hour == 11 or now.hour == 13 or now.hour == 15:
-            print("Пора поднимать объявления")
-            url = "https://exkavator.ru/auth/"
-            up_all(url)
-            time.sleep(7000)  # спим почти 2 часа
-        elif now.hour == 17:
-            print("Пора поднимать объявления")
-            url = "https://exkavator.ru/auth/"
-            up_all(url)
-            time.sleep(57000)  # спим до утра
-    else:
-        print("Сплю, но скоро проснусь")
-        time.sleep(5)  # для отслеживания лога
+if __name__ == "__main__":
+    while True:
+        now = datetime.datetime.now()  # на сервере должен стоять часовой пояс МСК
+        if now.minute == 0:
+            if now.hour == 9 or now.hour == 11 or now.hour == 13 or now.hour == 15:
+                print("Пора поднимать объявления")
+                url = "https://exkavator.ru/auth/"
+                up_all(url)
+                time.sleep(7000)  # спим почти 2 часа
+            elif now.hour == 17:
+                print("Пора поднимать объявления")
+                url = "https://exkavator.ru/auth/"
+                up_all(url)
+                time.sleep(57000)  # спим до утра
+        else:
+            print("Сплю, но скоро проснусь")
+            time.sleep(5)  # для отслеживания лога
